@@ -38,22 +38,26 @@ export default function MentoriaTraderLanding() {
       {
         icon: <LineChart className="w-6 h-6" />,
         title: "Estratégias comprovadas",
-        desc: "Setup objetivo para day trade e swing trade, com entradas claras, stops e alvos definidos.",
+        desc:
+          "Setup objetivo para day trade e swing trade, com entradas claras, stops e alvos definidos.",
       },
       {
         icon: <Users className="w-6 h-6" />,
         title: "Acompanhamento diário",
-        desc: "Sala ao vivo e comunidade para tirar dúvidas e evoluir com outros alunos.",
+        desc:
+          "Sala ao vivo e comunidade para tirar dúvidas e evoluir com outros alunos.",
       },
       {
         icon: <Shield className="w-6 h-6" />,
         title: "Gestão de risco",
-        desc: "Modelos de risk management para proteger capital e crescer de forma consistente.",
+        desc:
+          "Modelos de risk management para proteger capital e crescer de forma consistente.",
       },
       {
         icon: <Star className="w-6 h-6" />,
         title: "Mentoria premium",
-        desc: "Feedback individual, plano de estudos e trilhas para iniciantes e avançados.",
+        desc:
+          "Feedback individual, plano de estudos e trilhas para iniciantes e avançados.",
       },
     ],
     []
@@ -92,19 +96,23 @@ export default function MentoriaTraderLanding() {
   const faq = [
     {
       q: "Para quem é a mentoria?",
-      a: "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão de risco e criar consistência.",
+      a:
+        "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão de risco e criar consistência.",
     },
     {
       q: "Preciso de experiência?",
-      a: "Não. Você terá trilhas de estudo desde o zero até setups avançados, com acompanhamento.",
+      a:
+        "Não. Você terá trilhas de estudo desde o zero até setups avançados, com acompanhamento.",
     },
     {
       q: "Como funcionam as aulas?",
-      a: "Aulas gravadas + encontros ao vivo semanais. Suporte diário no grupo e materiais para prática.",
+      a:
+        "Aulas gravadas + encontros ao vivo semanais. Suporte diário no grupo e materiais para prática.",
     },
     {
       q: "Posso cancelar?",
-      a: "Sim, você pode solicitar cancelamento a qualquer momento. Também oferecemos garantia de 7 dias.",
+      a:
+        "Sim, você pode solicitar cancelamento a qualquer momento. Também oferecemos garantia de 7 dias.",
     },
   ];
 
@@ -113,6 +121,7 @@ export default function MentoriaTraderLanding() {
       <Header />
       <Hero />
       <TrustBar />
+
       <Section
         id="beneficios"
         title={`Por que a ${MARCA}?`}
@@ -138,14 +147,38 @@ export default function MentoriaTraderLanding() {
         </div>
       </Section>
 
-      <Section id="como-funciona" title="Como funciona" subtitle="Do onboarding ao seu primeiro trade consistente">
+      <Section
+        id="como-funciona"
+        title="Como funciona"
+        subtitle="Do onboarding ao seu primeiro trade consistente"
+      >
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-4">
             {[
-              { step: 1, title: "Onboarding e diagnóstico", desc: "Entendemos seu momento, traçamos metas e um plano de estudos sob medida." },
-              { step: 2, title: "Fundamentos e setups", desc: "Aulas práticas e diretas para você operar com confiança e critérios objetivos." },
-              { step: 3, title: "Gestão de risco na prática", desc: "Tamanho de posição, exposição diária, stops e alvos — tudo modelado para seu perfil." },
-              { step: 4, title: "Acompanhamento e evolução", desc: "Sala ao vivo, revisão de trades e feedbacks para acelerar seus resultados." },
+              {
+                step: 1,
+                title: "Onboarding e diagnóstico",
+                desc:
+                  "Entendemos seu momento, traçamos metas e um plano de estudos sob medida.",
+              },
+              {
+                step: 2,
+                title: "Fundamentos e setups",
+                desc:
+                  "Aulas práticas e diretas para você operar com confiança e critérios objetivos.",
+              },
+              {
+                step: 3,
+                title: "Gestão de risco na prática",
+                desc:
+                  "Tamanho de posição, exposição diária, stops e alvos — tudo modelado para seu perfil.",
+              },
+              {
+                step: 4,
+                title: "Acompanhamento e evolução",
+                desc:
+                  "Sala ao vivo, revisão de trades e feedbacks para acelerar seus resultados.",
+              },
             ].map((s, i) => (
               <motion.div
                 key={s.step}
@@ -173,7 +206,7 @@ export default function MentoriaTraderLanding() {
                 <div className="rounded-[18px] overflow-hidden bg-black">
                   <div className="aspect-[9/16] w-full">
                     <video
-                      src="/video1.mp4"      // coloque o arquivo em public/intro.mp4
+                      src="/video1.mp4"
                       autoPlay
                       muted
                       loop
@@ -184,13 +217,17 @@ export default function MentoriaTraderLanding() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400"></p>
+              <p className="mt-3 text-center text-xs text-slate-400" />
             </div>
           </div>
         </div>
       </Section>
 
-      <Section id="conteudo" title="O que você vai aprender" subtitle="Do zero ao avançado, com método e clareza">
+      <Section
+        id="conteudo"
+        title="O que você vai aprender"
+        subtitle="Do zero ao avançado, com método e clareza"
+      >
         <ul className="grid md:grid-cols-2 gap-3">
           {conteudos.map((c, i) => (
             <li key={i} className="flex items-start gap-3 text-slate-200">
@@ -201,7 +238,11 @@ export default function MentoriaTraderLanding() {
         </ul>
       </Section>
 
-      <Section id="prova-social" title="Resultados dos alunos" subtitle="Depoimentos reais de quem aplicou o método">
+      <Section
+        id="prova-social"
+        title="Resultados dos alunos"
+        subtitle="Depoimentos reais de quem aplicou o método"
+      >
         <div className="grid md:grid-cols-3 gap-6">
           {depoimentos.map((d, i) => (
             <motion.div
@@ -219,25 +260,51 @@ export default function MentoriaTraderLanding() {
                   </div>
                   <span className="font-semibold">{d.nome}</span>
                 </div>
-                <span className="text-emerald-400 text-sm font-medium">{d.ganho}</span>
+                <span className="text-emerald-400 text-sm font-medium">
+                  {d.ganho}
+                </span>
               </div>
-              <p className="text-slate-300 text-sm leading-relaxed">“{d.texto}”</p>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                “{d.texto}”
+              </p>
             </motion.div>
           ))}
         </div>
         <p className="text-xs text-slate-400 mt-3">
-          Disclaimer: resultados variam. Nenhum ganho é garantido. Operar no mercado envolve riscos.
+          Disclaimer: resultados variam. Nenhum ganho é garantido. Operar no
+          mercado envolve riscos.
         </p>
       </Section>
 
-      <Section id="plano" title="Entre para a mentoria" subtitle="Vagas limitadas para acompanhamento próximo">
+      {/* ======= PLANOS ======= */}
+      <Section
+        id="plano"
+        title="Entre para a mentoria"
+        subtitle="Vagas limitadas para acompanhamento próximo"
+      >
         <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
           <CardFeature />
-          <CardCheckout />
+
+          {/* Coluna da direita com 2 planos */}
+          <div className="grid gap-6">
+            <CardCheckout />
+
+            {/* NOVO PLANO: Sala de Operações */}
+            <CardPlan
+              title="Plano Sala de Operações"
+              price="R$ 150,00"
+              desc="Sala ao vivo com envio de sinais de compra e venda + espaço para tirar dúvidas rápidas dos alunos."
+              badge="novo"
+            />
+          </div>
         </div>
       </Section>
 
-      <Section id="faq" title="Perguntas frequentes" subtitle="Tire suas dúvidas antes de entrar">
+      <Section
+        id="faq"
+        title="Perguntas frequentes"
+        subtitle="Tire suas dúvidas antes de entrar"
+      >
         <div className="divide-y divide-white/10 rounded-2xl overflow-hidden ring-1 ring-white/10">
           {faq.map((f, i) => (
             <details key={i} className="group bg-slate-900/40">
@@ -270,16 +337,23 @@ export default function MentoriaTraderLanding() {
 
           <div className="space-y-4">
             <p className="text-slate-300 text-sm leading-relaxed">
-              {MENTOR_NOME} opera há mais de 5 anos no mercado, com foco em leitura de contexto e setups objetivos. Já
-              ajudou centenas de alunos a saírem do aleatório para um processo claro e mensurável.
+              {MENTOR_NOME} opera há mais de 5 anos no mercado, com foco em
+              leitura de contexto e setups objetivos. Já ajudou centenas de
+              alunos a saírem do aleatório para um processo claro e mensurável.
             </p>
             <ul className="grid sm:grid-cols-3 gap-3">
               {[
                 { icon: <Trophy className="w-5 h-5" />, label: "+500 alunos" },
-                { icon: <DollarSign className="w-5 h-5" />, label: "Risco controlado" },
+                {
+                  icon: <DollarSign className="w-5 h-5" />,
+                  label: "Risco controlado",
+                },
                 { icon: <Sparkles className="w-5 h-5" />, label: "Método direto" },
               ].map((it, i) => (
-                <li key={i} className="flex items-center gap-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-3">
+                <li
+                  key={i}
+                  className="flex items-center gap-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-3"
+                >
                   <span className="text-amber-400">{it.icon}</span>
                   <span className="text-sm">{it.label}</span>
                 </li>
@@ -325,11 +399,21 @@ function Header() {
 
         {/* MENU */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-300">
-          <a href="#beneficios" className="hover:text-white">Benefícios</a>
-          <a href="#como-funciona" className="hover:text-white">Como funciona</a>
-          <a href="#conteudo" className="hover:text-white">Conteúdo</a>
-          <a href="#prova-social" className="hover:text-white">Resultados</a>
-          <a href="#plano" className="hover:text-white font-semibold text-white">Entrar</a>
+          <a href="#beneficios" className="hover:text-white">
+            Benefícios
+          </a>
+          <a href="#como-funciona" className="hover:text-white">
+            Como funciona
+          </a>
+          <a href="#conteudo" className="hover:text-white">
+            Conteúdo
+          </a>
+          <a href="#prova-social" className="hover:text-white">
+            Resultados
+          </a>
+          <a href="#plano" className="hover:text-white font-semibold text-white">
+            Entrar
+          </a>
         </nav>
 
         {/* CTA HEADER */}
@@ -373,7 +457,8 @@ function Hero() {
             </motion.h1>
 
             <p className="mt-4 text-slate-300/90 max-w-xl">
-              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão de risco e acompanhamento para evoluir de forma previsível.
+              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão de
+              risco e acompanhamento para evoluir de forma previsível.
             </p>
 
             {/* CTA WhatsApp */}
@@ -419,7 +504,7 @@ function Hero() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400"></p>
+              <p className="mt-3 text-center text-xs text-slate-400" />
             </div>
           </div>
         </div>
@@ -428,8 +513,12 @@ function Hero() {
       {/* animação do shine no gradiente da palavra */}
       <style jsx>{`
         @keyframes shine {
-          0% { background-position: 0% 50%; }
-          100% { background-position: 200% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 200% 50%;
+          }
         }
       `}</style>
     </section>
@@ -524,6 +613,53 @@ function CardCheckout() {
   );
 }
 
+/* --- NOVO CARD: Plano Sala de Operações --- */
+function CardPlan({
+  title,
+  price,
+  desc,
+  badge,
+}: {
+  title: string;
+  price: string;
+  desc: string;
+  badge?: string;
+}) {
+  const PLAN_WA = `${WHATSAPP_LINK}&text=${encodeURIComponent(
+    `Olá! Quero assinar o ${title}.`
+  )}`;
+
+  return (
+    <div className="rounded-2xl bg-slate-900/60 ring-1 ring-white/10 p-6 shadow-xl">
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        {badge ? <span className="text-xs text-emerald-400">{badge}</span> : null}
+      </div>
+
+      <div className="mt-3 flex items-end gap-2">
+        <span className="text-4xl font-extrabold">{price}</span>
+        <span className="text-slate-400">/ mês</span>
+      </div>
+
+      <p className="text-sm text-slate-300 mt-2">{desc}</p>
+
+      <div className="mt-5 space-y-3">
+        <a
+          href={PLAN_WA}
+          target="_blank"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-5 py-3 font-semibold shadow-lg hover:opacity-90"
+        >
+          Entrar na sala pelo WhatsApp <MessageCircle className="w-4 h-4" />
+        </a>
+
+        <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
+          <Shield className="w-4 h-4" /> Garantia de 7 dias
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CtaSticky() {
   return (
     <div className="fixed bottom-4 left-0 right-0 z-40">
@@ -552,11 +688,18 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/mago.png" alt={MARCA} width={32} height={32} className="rounded object-cover" />
+            <Image
+              src="/mago.png"
+              alt={MARCA}
+              width={32}
+              height={32}
+              className="rounded object-cover"
+            />
             <span className="font-bold">{MARCA}</span>
           </div>
           <p className="text-slate-400 mt-2 max-w-sm">
-            Educação em trading focada em consistência, gestão de risco e tomada de decisão simples.
+            Educação em trading focada em consistência, gestão de risco e tomada
+            de decisão simples.
           </p>
         </div>
         <div>
@@ -588,8 +731,8 @@ function Footer() {
               </a>
             </li>
             <li className="text-xs text-slate-500">
-              * Este conteúdo é educacional e não constitui recomendação de investimento. Resultados passados não
-              garantem resultados futuros.
+              * Este conteúdo é educacional e não constitui recomendação de
+              investimento. Resultados passados não garantem resultados futuros.
             </li>
           </ul>
         </div>
