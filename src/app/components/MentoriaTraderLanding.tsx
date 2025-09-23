@@ -300,8 +300,8 @@ export default function MentoriaTraderLanding() {
             <PlanCard
               title="Plano Sala de Operações"
               price="R$ 150,00"
-              desc="Sala ao vivo com envio de sinais de compra e venda + espaço para tirar dúvidas rápidas dos alunos."
-              badge="novo"
+              desc="Sala ao vivo com envio de sinais de compra e venda + espaço para tirar dúvidas."
+              badge="vagas limitadas"
               cta="Entrar na sala pelo WhatsApp"
               waMessage="Olá! Quero assinar o Plano Sala de Operações."
             />
