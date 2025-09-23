@@ -256,11 +256,11 @@ export default function MentoriaTraderLanding() {
         title={`Sobre ${MENTOR_NOME}`}
         subtitle={`${MENTOR_TITULO} | especialista em consistência e gestão de risco`}
       >
-        <div className="grid lg:grid-cols-[320px_1fr] gap-8 items-center">
+        <div className="grid lg:grid-cols-[220px_1fr] gap-8 items-center">
           {/* imagem 500x500 responsiva (preenche) */}
           <div className="w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-slate-800 ring-1 ring-white/10 relative">
             <Image
-              src="/logomago.jpeg"
+              src="/mago.jpeg"
               alt={MENTOR_NOME}
               fill
               className="object-cover object-center"
@@ -552,7 +552,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/logomago.jpeg" alt={MARCA} width={32} height={32} className="rounded object-cover" />
+            <Image src="/mago.jpeg" alt={MARCA} width={32} height={32} className="rounded object-cover" />
             <span className="font-bold">{MARCA}</span>
           </div>
           <p className="text-slate-400 mt-2 max-w-sm">
