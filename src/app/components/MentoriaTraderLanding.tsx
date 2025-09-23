@@ -168,7 +168,7 @@ export default function MentoriaTraderLanding() {
 
           {/* Vídeo local: sem barra lateral, autoplay e loop */}
           <div className="relative">
-            <div className="mx-auto w-full max-w-[380px]">
+            <div className="mx-auto w-full max-w-[220px]">
               <div className="relative rounded-[22px] p-2 bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_20px_80px_-20px_rgba(245,158,11,.35)]">
                 <div className="rounded-[18px] overflow-hidden bg-black">
                   <div className="aspect-[9/16] w-full">
@@ -184,7 +184,7 @@ export default function MentoriaTraderLanding() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400">Vídeo de apresentação.</p>
+              <p className="mt-3 text-center text-xs text-slate-400"></p>
             </div>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function MentoriaTraderLanding() {
           {/* imagem 500x500 responsiva (preenche) */}
           <div className="w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-slate-800 ring-1 ring-white/10 relative">
             <Image
-              src="/mago.jpeg"
+              src="/mago.png"
               alt={MENTOR_NOME}
               fill
               className="object-cover object-center"
@@ -419,7 +419,7 @@ function Hero() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400">Vídeo de apresentação.</p>
+              <p className="mt-3 text-center text-xs text-slate-400"></p>
             </div>
           </div>
         </div>
@@ -552,7 +552,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <Image src="/mago.jpeg" alt={MARCA} width={32} height={32} className="rounded object-cover" />
+            <Image src="/mago.png" alt={MARCA} width={32} height={32} className="rounded object-cover" />
             <span className="font-bold">{MARCA}</span>
           </div>
           <p className="text-slate-400 mt-2 max-w-sm">
