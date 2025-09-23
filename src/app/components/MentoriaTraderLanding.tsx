@@ -19,10 +19,10 @@ import {
 
 /* ================== CONFIG ================== */
 const WHATSAPP_LINK =
-  "https://wa.me/5511988964565?text=Ol%C3%A1!%20Quero%20entrar%20na%20mentoria%20de%20trader."; // troque pelo seu número
+  "https://wa.me/5511988964565?text=Ol%C3%A1!%20Quero%20entrar%20na%20mentoria%20de%20trader.";
 const MENTOR_NOME = "MAGO O TRADER";
 const MENTOR_TITULO = "Trader e Mentor";
-const MARCA = "Mentoria Mago O Trader"; // aparece no topo
+const MARCA = "Mentoria Mago O Trader";
 /* ============================================ */
 
 type SectionProps = {
@@ -49,7 +49,7 @@ export default function MentoriaTraderLanding() {
       },
       {
         icon: <Shield className="w-6 h-6" />,
-        title: "Gestão de risco",
+        title: "Gestão",
         desc:
           "Modelos de risk management para proteger capital e crescer de forma consistente.",
       },
@@ -67,7 +67,7 @@ export default function MentoriaTraderLanding() {
     "Leitura de fluxo e contexto (price action prático)",
     "Setups de alta probabilidade e confirmação",
     "Psicologia do trader e disciplina",
-    "Gestão de risco e tamanho de posição",
+    "Gestão e tamanho de posição",
     "Playbook de rotina diária (pré, durante e pós-mercado)",
     "Diário de trade e métricas de desempenho",
   ];
@@ -82,7 +82,7 @@ export default function MentoriaTraderLanding() {
     {
       nome: "Carlos R.",
       texto:
-        "A gestão de risco mudou meu jogo. Hoje opero tranquilo e consistente, sem buscar o 'tiro de sorte'.",
+        "A gestão mudou meu jogo. Hoje opero tranquilo e consistente, sem buscar o 'tiro de sorte'.",
       ganho: "+R$ 1.780",
     },
     {
@@ -97,7 +97,7 @@ export default function MentoriaTraderLanding() {
     {
       q: "Para quem é a mentoria?",
       a:
-        "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão de risco e criar consistência.",
+        "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão e criar consistência.",
     },
     {
       q: "Preciso de experiência?",
@@ -169,7 +169,7 @@ export default function MentoriaTraderLanding() {
               },
               {
                 step: 3,
-                title: "Gestão de risco na prática",
+                title: "Gestão na prática",
                 desc:
                   "Tamanho de posição, exposição diária, stops e alvos — tudo modelado para seu perfil.",
               },
@@ -276,25 +276,34 @@ export default function MentoriaTraderLanding() {
         </p>
       </Section>
 
-      {/* ======= PLANOS ======= */}
+      {/* ======= PLANOS (organizado) ======= */}
       <Section
         id="plano"
         title="Entre para a mentoria"
         subtitle="Vagas limitadas para acompanhamento próximo"
       >
-        <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
+        <div className="space-y-8">
+          {/* Box de benefícios primeiro */}
           <CardFeature />
 
-          {/* Coluna da direita com 2 planos */}
-          <div className="grid gap-6">
-            <CardCheckout />
+          {/* Cards dos planos lado a lado */}
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
+            <PlanCard
+              title="Plano Mentoria"
+              price="R$ 500,00"
+              desc="Acesso completo + suporte + encontros ao vivo."
+              badge="vagas limitadas"
+              cta="Entrar na mentoria pelo WhatsApp"
+              waMessage="Olá! Quero assinar a Mentoria."
+            />
 
-            {/* NOVO PLANO: Sala de Operações */}
-            <CardPlan
+            <PlanCard
               title="Plano Sala de Operações"
               price="R$ 150,00"
               desc="Sala ao vivo com envio de sinais de compra e venda + espaço para tirar dúvidas rápidas dos alunos."
               badge="novo"
+              cta="Entrar na sala pelo WhatsApp"
+              waMessage="Olá! Quero assinar o Plano Sala de Operações."
             />
           </div>
         </div>
@@ -321,7 +330,7 @@ export default function MentoriaTraderLanding() {
       <Section
         id="mentor"
         title={`Sobre ${MENTOR_NOME}`}
-        subtitle={`${MENTOR_TITULO} | especialista em consistência e gestão de risco`}
+        subtitle={`${MENTOR_TITULO} | especialista em consistência e gestão`}
       >
         <div className="grid lg:grid-cols-[220px_1fr] gap-8 items-center">
           {/* imagem 500x500 responsiva (preenche) */}
@@ -384,7 +393,7 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 bg-slate-950/80 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        {/* LOGO + NOME (Link interno corrigido) */}
+        {/* LOGO + NOME */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/mago.png"
@@ -394,26 +403,16 @@ function Header() {
             className="h-8 w-8 rounded object-cover"
             priority
           />
-          <span className="font-bold tracking-tight">{MARCA}</span>
+        <span className="font-bold tracking-tight">{MARCA}</span>
         </Link>
 
         {/* MENU */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-300">
-          <a href="#beneficios" className="hover:text-white">
-            Benefícios
-          </a>
-          <a href="#como-funciona" className="hover:text-white">
-            Como funciona
-          </a>
-          <a href="#conteudo" className="hover:text-white">
-            Conteúdo
-          </a>
-          <a href="#prova-social" className="hover:text-white">
-            Resultados
-          </a>
-          <a href="#plano" className="hover:text-white font-semibold text-white">
-            Entrar
-          </a>
+          <a href="#beneficios" className="hover:text-white">Benefícios</a>
+          <a href="#como-funciona" className="hover:text-white">Como funciona</a>
+          <a href="#conteudo" className="hover:text-white">Conteúdo</a>
+          <a href="#prova-social" className="hover:text-white">Resultados</a>
+          <a href="#plano" className="hover:text-white font-semibold text-white">Entrar</a>
         </nav>
 
         {/* CTA HEADER */}
@@ -457,8 +456,7 @@ function Hero() {
             </motion.h1>
 
             <p className="mt-4 text-slate-300/90 max-w-xl">
-              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão de
-              risco e acompanhamento para evoluir de forma previsível.
+              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão e acompanhamento para evoluir de forma previsível.
             </p>
 
             {/* CTA WhatsApp */}
@@ -513,12 +511,8 @@ function Hero() {
       {/* animação do shine no gradiente da palavra */}
       <style jsx>{`
         @keyframes shine {
-          0% {
-            background-position: 0% 50%;
-          }
-          100% {
-            background-position: 200% 50%;
-          }
+          0% { background-position: 0% 50%; }
+          100% { background-position: 200% 50%; }
         }
       `}</style>
     </section>
@@ -566,7 +560,7 @@ function CardFeature() {
           "Sala ao vivo / encontros semanais",
           "Setups com critérios objetivos",
           "Diário de trade e planilhas",
-          "Modelos de gestão de risco",
+          "Modelos de gestão",
           "Suporte e comunidade",
         ].map((i, idx) => (
           <li key={idx} className="flex items-start gap-2">
@@ -582,58 +576,33 @@ function CardFeature() {
   );
 }
 
-function CardCheckout() {
-  return (
-    <div className="rounded-2xl bg-slate-900/60 ring-1 ring-white/10 p-6 shadow-xl">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">Plano Mentoria</h3>
-        <span className="text-xs text-emerald-400">vagas limitadas</span>
-      </div>
-
-      <div className="mt-3 flex items-end gap-2">
-        <span className="text-4xl font-extrabold">R$ 500,00</span>
-        <span className="text-slate-400">/ mês</span>
-      </div>
-      <p className="text-sm text-slate-300 mt-2">Acesso completo + suporte + encontros ao vivo.</p>
-
-      {/* sem email — CTA direto para o WhatsApp */}
-      <div className="mt-5 space-y-3">
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-5 py-3 font-semibold shadow-lg hover:opacity-90"
-        >
-          Entrar na mentoria pelo WhatsApp <MessageCircle className="w-4 h-4" />
-        </a>
-        <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
-          <Shield className="w-4 h-4" /> Garantia de 7 dias
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* --- NOVO CARD: Plano Sala de Operações --- */
-function CardPlan({
+/* ---- Card genérico de plano (usa flex para igualar alturas) ---- */
+function PlanCard({
   title,
   price,
   desc,
   badge,
+  cta,
+  waMessage,
 }: {
   title: string;
   price: string;
   desc: string;
   badge?: string;
+  cta: string;
+  waMessage: string;
 }) {
-  const PLAN_WA = `${WHATSAPP_LINK}&text=${encodeURIComponent(
-    `Olá! Quero assinar o ${title}.`
-  )}`;
+  const url = `${WHATSAPP_LINK}&text=${encodeURIComponent(waMessage)}`;
 
   return (
-    <div className="rounded-2xl bg-slate-900/60 ring-1 ring-white/10 p-6 shadow-xl">
+    <div className="h-full rounded-2xl bg-slate-900/60 ring-1 ring-white/10 p-6 shadow-xl flex flex-col">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold">{title}</h3>
-        {badge ? <span className="text-xs text-emerald-400">{badge}</span> : null}
+        {badge && (
+          <span className={`text-xs ${badge === "novo" ? "text-emerald-400" : "text-emerald-300"}`}>
+            {badge}
+          </span>
+        )}
       </div>
 
       <div className="mt-3 flex items-end gap-2">
@@ -643,15 +612,14 @@ function CardPlan({
 
       <p className="text-sm text-slate-300 mt-2">{desc}</p>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-5 gap-3 flex flex-col">
         <a
-          href={PLAN_WA}
+          href={url}
           target="_blank"
           className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-5 py-3 font-semibold shadow-lg hover:opacity-90"
         >
-          Entrar na sala pelo WhatsApp <MessageCircle className="w-4 h-4" />
+          {cta} <MessageCircle className="w-4 h-4" />
         </a>
-
         <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
           <Shield className="w-4 h-4" /> Garantia de 7 dias
         </div>
@@ -688,17 +656,11 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <Image
-              src="/mago.png"
-              alt={MARCA}
-              width={32}
-              height={32}
-              className="rounded object-cover"
-            />
+            <Image src="/mago.png" alt={MARCA} width={32} height={32} className="rounded object-cover" />
             <span className="font-bold">{MARCA}</span>
           </div>
           <p className="text-slate-400 mt-2 max-w-sm">
-            Educação em trading focada em consistência, gestão de risco e tomada
+            Educação em trading focada em consistência, gestão e tomada
             de decisão simples.
           </p>
         </div>
@@ -720,16 +682,8 @@ function Footer() {
         <div>
           <p className="text-slate-400">Legal</p>
           <ul className="mt-2 space-y-2 text-slate-300">
-            <li>
-              <a href="#" className="hover:underline">
-                Termos de uso
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Política de privacidade
-              </a>
-            </li>
+            <li><a href="#" className="hover:underline">Termos de uso</a></li>
+            <li><a href="#" className="hover:underline">Política de privacidade</a></li>
             <li className="text-xs text-slate-500">
               * Este conteúdo é educacional e não constitui recomendação de
               investimento. Resultados passados não garantem resultados futuros.
