@@ -20,7 +20,7 @@ import {
 /* ================== CONFIG ================== */
 const WHATSAPP_LINK =
   "https://wa.me/5511988964565?text=Ol%C3%A1!%20Quero%20entrar%20na%20mentoria%20de%20trader."; // troque pelo seu número
-const MENTOR_NOME = "MAGO DO TRADER";
+const MENTOR_NOME = "MAGO O TRADER";
 const MENTOR_TITULO = "Trader e Mentor";
 const MARCA = "Mentoria Elite Trader"; // aparece no topo
 /* ============================================ */
