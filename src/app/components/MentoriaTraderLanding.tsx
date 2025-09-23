@@ -1,9 +1,8 @@
 "use client";
 
-import {
-  useMemo,
-  type ReactNode,
-} from "react";
+import { useMemo, type ReactNode } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Check,
@@ -39,26 +38,22 @@ export default function MentoriaTraderLanding() {
       {
         icon: <LineChart className="w-6 h-6" />,
         title: "Estratégias comprovadas",
-        desc:
-          "Setup objetivo para day trade e swing trade, com entradas claras, stops e alvos definidos.",
+        desc: "Setup objetivo para day trade e swing trade, com entradas claras, stops e alvos definidos.",
       },
       {
         icon: <Users className="w-6 h-6" />,
         title: "Acompanhamento diário",
-        desc:
-          "Sala ao vivo e comunidade para tirar dúvidas e evoluir com outros alunos.",
+        desc: "Sala ao vivo e comunidade para tirar dúvidas e evoluir com outros alunos.",
       },
       {
         icon: <Shield className="w-6 h-6" />,
         title: "Gestão de risco",
-        desc:
-          "Modelos de risk management para proteger capital e crescer de forma consistente.",
+        desc: "Modelos de risk management para proteger capital e crescer de forma consistente.",
       },
       {
         icon: <Star className="w-6 h-6" />,
         title: "Mentoria premium",
-        desc:
-          "Feedback individual, plano de estudos e trilhas para iniciantes e avançados.",
+        desc: "Feedback individual, plano de estudos e trilhas para iniciantes e avançados.",
       },
     ],
     []
@@ -97,23 +92,19 @@ export default function MentoriaTraderLanding() {
   const faq = [
     {
       q: "Para quem é a mentoria?",
-      a:
-        "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão de risco e criar consistência.",
+      a: "Para iniciantes e traders com experiência que querem sistematizar entradas, dominar gestão de risco e criar consistência.",
     },
     {
       q: "Preciso de experiência?",
-      a:
-        "Não. Você terá trilhas de estudo desde o zero até setups avançados, com acompanhamento.",
+      a: "Não. Você terá trilhas de estudo desde o zero até setups avançados, com acompanhamento.",
     },
     {
       q: "Como funcionam as aulas?",
-      a:
-        "Aulas gravadas + encontros ao vivo semanais. Suporte diário no grupo e materiais para prática.",
+      a: "Aulas gravadas + encontros ao vivo semanais. Suporte diário no grupo e materiais para prática.",
     },
     {
       q: "Posso cancelar?",
-      a:
-        "Sim, você pode solicitar cancelamento a qualquer momento. Também oferecemos garantia de 7 dias.",
+      a: "Sim, você pode solicitar cancelamento a qualquer momento. Também oferecemos garantia de 7 dias.",
     },
   ];
 
@@ -141,46 +132,20 @@ export default function MentoriaTraderLanding() {
                 {b.icon}
               </div>
               <h3 className="text-lg font-semibold mb-2">{b.title}</h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                {b.desc}
-              </p>
+              <p className="text-slate-300 text-sm leading-relaxed">{b.desc}</p>
             </motion.div>
           ))}
         </div>
       </Section>
 
-      <Section
-        id="como-funciona"
-        title="Como funciona"
-        subtitle="Do onboarding ao seu primeiro trade consistente"
-      >
+      <Section id="como-funciona" title="Como funciona" subtitle="Do onboarding ao seu primeiro trade consistente">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-4">
             {[
-              {
-                step: 1,
-                title: "Onboarding e diagnóstico",
-                desc:
-                  "Entendemos seu momento, traçamos metas e um plano de estudos sob medida.",
-              },
-              {
-                step: 2,
-                title: "Fundamentos e setups",
-                desc:
-                  "Aulas práticas e diretas para você operar com confiança e critérios objetivos.",
-              },
-              {
-                step: 3,
-                title: "Gestão de risco na prática",
-                desc:
-                  "Tamanho de posição, exposição diária, stops e alvos — tudo modelado para seu perfil.",
-              },
-              {
-                step: 4,
-                title: "Acompanhamento e evolução",
-                desc:
-                  "Sala ao vivo, revisão de trades e feedbacks para acelerar seus resultados.",
-              },
+              { step: 1, title: "Onboarding e diagnóstico", desc: "Entendemos seu momento, traçamos metas e um plano de estudos sob medida." },
+              { step: 2, title: "Fundamentos e setups", desc: "Aulas práticas e diretas para você operar com confiança e critérios objetivos." },
+              { step: 3, title: "Gestão de risco na prática", desc: "Tamanho de posição, exposição diária, stops e alvos — tudo modelado para seu perfil." },
+              { step: 4, title: "Acompanhamento e evolução", desc: "Sala ao vivo, revisão de trades e feedbacks para acelerar seus resultados." },
             ].map((s, i) => (
               <motion.div
                 key={s.step}
@@ -203,12 +168,12 @@ export default function MentoriaTraderLanding() {
 
           {/* Vídeo local: sem barra lateral, autoplay e loop */}
           <div className="relative">
-            <div className="mx-auto w-full max-w-[220px]">
+            <div className="mx-auto w-full max-w-[380px]">
               <div className="relative rounded-[22px] p-2 bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_20px_80px_-20px_rgba(245,158,11,.35)]">
                 <div className="rounded-[18px] overflow-hidden bg-black">
                   <div className="aspect-[9/16] w-full">
                     <video
-                      src="/video2.mp4"      // coloque o arquivo em public/intro.mp4
+                      src="/video1.mp4"      // coloque o arquivo em public/intro.mp4
                       autoPlay
                       muted
                       loop
@@ -219,18 +184,13 @@ export default function MentoriaTraderLanding() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400">                
-              </p>
+              <p className="mt-3 text-center text-xs text-slate-400">Vídeo de apresentação.</p>
             </div>
           </div>
         </div>
       </Section>
 
-      <Section
-        id="conteudo"
-        title="O que você vai aprender"
-        subtitle="Do zero ao avançado, com método e clareza"
-      >
+      <Section id="conteudo" title="O que você vai aprender" subtitle="Do zero ao avançado, com método e clareza">
         <ul className="grid md:grid-cols-2 gap-3">
           {conteudos.map((c, i) => (
             <li key={i} className="flex items-start gap-3 text-slate-200">
@@ -241,11 +201,7 @@ export default function MentoriaTraderLanding() {
         </ul>
       </Section>
 
-      <Section
-        id="prova-social"
-        title="Resultados dos alunos"
-        subtitle="Depoimentos reais de quem aplicou o método"
-      >
+      <Section id="prova-social" title="Resultados dos alunos" subtitle="Depoimentos reais de quem aplicou o método">
         <div className="grid md:grid-cols-3 gap-6">
           {depoimentos.map((d, i) => (
             <motion.div
@@ -263,36 +219,25 @@ export default function MentoriaTraderLanding() {
                   </div>
                   <span className="font-semibold">{d.nome}</span>
                 </div>
-                <span className="text-emerald-400 text-sm font-medium">
-                  {d.ganho}
-                </span>
+                <span className="text-emerald-400 text-sm font-medium">{d.ganho}</span>
               </div>
               <p className="text-slate-300 text-sm leading-relaxed">“{d.texto}”</p>
             </motion.div>
           ))}
         </div>
         <p className="text-xs text-slate-400 mt-3">
-          Disclaimer: resultados variam. Nenhum ganho é garantido. Operar no
-          mercado envolve riscos.
+          Disclaimer: resultados variam. Nenhum ganho é garantido. Operar no mercado envolve riscos.
         </p>
       </Section>
 
-      <Section
-        id="plano"
-        title="Entre para a mentoria"
-        subtitle="Vagas limitadas para acompanhamento próximo"
-      >
+      <Section id="plano" title="Entre para a mentoria" subtitle="Vagas limitadas para acompanhamento próximo">
         <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
           <CardFeature />
           <CardCheckout />
         </div>
       </Section>
 
-      <Section
-        id="faq"
-        title="Perguntas frequentes"
-        subtitle="Tire suas dúvidas antes de entrar"
-      >
+      <Section id="faq" title="Perguntas frequentes" subtitle="Tire suas dúvidas antes de entrar">
         <div className="divide-y divide-white/10 rounded-2xl overflow-hidden ring-1 ring-white/10">
           {faq.map((f, i) => (
             <details key={i} className="group bg-slate-900/40">
@@ -312,15 +257,21 @@ export default function MentoriaTraderLanding() {
         subtitle={`${MENTOR_TITULO} | especialista em consistência e gestão de risco`}
       >
         <div className="grid lg:grid-cols-[320px_1fr] gap-8 items-center">
-          {/* foto/LOGO do mentor */}
-          <div className="w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-slate-800 ring-1 ring-white/10 mx-auto">
-            <img src="/mago.png" alt={MENTOR_NOME} className="w-full h-full object-cover object-center" />
+          {/* imagem 500x500 responsiva (preenche) */}
+          <div className="w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-slate-800 ring-1 ring-white/10 relative">
+            <Image
+              src="/logomago.jpeg"
+              alt={MENTOR_NOME}
+              fill
+              className="object-cover object-center"
+              priority
+            />
           </div>
+
           <div className="space-y-4">
             <p className="text-slate-300 text-sm leading-relaxed">
-              {MENTOR_NOME} opera há mais de 5 anos no mercado, com foco em
-              leitura de contexto e setups objetivos. Já ajudou centenas de
-              alunos a saírem do aleatório para um processo claro e mensurável.
+              {MENTOR_NOME} opera há mais de 5 anos no mercado, com foco em leitura de contexto e setups objetivos. Já
+              ajudou centenas de alunos a saírem do aleatório para um processo claro e mensurável.
             </p>
             <ul className="grid sm:grid-cols-3 gap-3">
               {[
@@ -328,10 +279,7 @@ export default function MentoriaTraderLanding() {
                 { icon: <DollarSign className="w-5 h-5" />, label: "Risco controlado" },
                 { icon: <Sparkles className="w-5 h-5" />, label: "Método direto" },
               ].map((it, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-3"
-                >
+                <li key={i} className="flex items-center gap-2 rounded-xl bg-slate-900/60 ring-1 ring-white/10 p-3">
                   <span className="text-amber-400">{it.icon}</span>
                   <span className="text-sm">{it.label}</span>
                 </li>
@@ -362,15 +310,18 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 bg-slate-950/80 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        {/* LOGO + NOME */}
-        <a href="/" className="flex items-center gap-3">
-          <img
-            src="/logomago.jpeg"
+        {/* LOGO + NOME (Link interno corrigido) */}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/mago.png"
             alt={MARCA}
-            className="h-8 w-auto"
+            width={32}
+            height={32}
+            className="h-8 w-8 rounded object-cover"
+            priority
           />
           <span className="font-bold tracking-tight">{MARCA}</span>
-        </a>
+        </Link>
 
         {/* MENU */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-slate-300">
@@ -422,11 +373,10 @@ function Hero() {
             </motion.h1>
 
             <p className="mt-4 text-slate-300/90 max-w-xl">
-              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão de
-              risco e acompanhamento para evoluir de forma previsível.
+              Entre para a {MARCA} e tenha acesso às aulas, setups, gestão de risco e acompanhamento para evoluir de forma previsível.
             </p>
 
-            {/* CTA WhatsApp (sem e-mail) */}
+            {/* CTA WhatsApp */}
             <div className="mt-6">
               <a
                 href={WHATSAPP_LINK}
@@ -458,7 +408,7 @@ function Hero() {
                 <div className="rounded-[18px] overflow-hidden bg-black">
                   <div className="aspect-[9/16] w-full">
                     <video
-                      src="/video1.mp4"   // coloque o vídeo em public/intro.mp4
+                      src="/video2.mp4"
                       autoPlay
                       muted
                       loop
@@ -469,7 +419,7 @@ function Hero() {
                 </div>
                 <div className="pointer-events-none absolute -inset-1 rounded-[26px] bg-amber-500/10 blur-2xl" />
               </div>
-              <p className="mt-3 text-center text-xs text-slate-400"></p>
+              <p className="mt-3 text-center text-xs text-slate-400">Vídeo de apresentação.</p>
             </div>
           </div>
         </div>
@@ -602,7 +552,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <div className="flex items-center gap-2">
-            <img src="/logomago.jpeg" alt={MARCA} className="h-8 w-auto rounded" />
+            <Image src="/logomago.jpeg" alt={MARCA} width={32} height={32} className="rounded object-cover" />
             <span className="font-bold">{MARCA}</span>
           </div>
           <p className="text-slate-400 mt-2 max-w-sm">
