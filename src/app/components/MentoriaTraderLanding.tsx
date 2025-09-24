@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, type ReactNode } from "react";
+import { useMemo, useState, useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -15,11 +15,17 @@ import {
   Trophy,
   Sparkles,
   DollarSign,
+  Instagram,
 } from "lucide-react";
 
 /* ================== CONFIG ================== */
+// Número do WhatsApp no formato internacional sem + nem espaços
+const WA_NUMBER = "5511988964565";
 const WHATSAPP_LINK =
   "https://wa.me/5511988964565?text=Ol%C3%A1!%20Quero%20entrar%20na%20mentoria%20de%20trader.";
+const INSTAGRAM_URL =
+  "https://www.instagram.com/alans.888/profilecard/?igsh=bzN1ZGluMXBuYjJ1";
+
 const MENTOR_NOME = "MAGO O TRADER";
 const MENTOR_TITULO = "Trader e Mentor";
 const MARCA = "Mentoria Mago O Trader";
@@ -33,6 +39,19 @@ type SectionProps = {
 };
 
 export default function MentoriaTraderLanding() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Abre o popup 2s após carregar, se já não foi dispensado nas últimas 24h
+  useEffect(() => {
+    const key = "mt_popup_until";
+    const until = localStorage.getItem(key);
+    const now = Date.now();
+    if (!until || now > Number(until)) {
+      const t = setTimeout(() => setShowPopup(true), 2000);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
   const beneficios = useMemo(
     () => [
       {
@@ -121,6 +140,20 @@ export default function MentoriaTraderLanding() {
       <Header />
       <Hero />
       <TrustBar />
+
+      {/* ====== POPUP ====== */}
+      {showPopup && (
+        <LeadPopup
+          onClose={() => {
+            // não mostrar novamente por 24h
+            localStorage.setItem(
+              "mt_popup_until",
+              String(Date.now() + 24 * 60 * 60 * 1000)
+            );
+            setShowPopup(false);
+          }}
+        />
+      )}
 
       <Section
         id="beneficios"
@@ -276,17 +309,15 @@ export default function MentoriaTraderLanding() {
         </p>
       </Section>
 
-      {/* ======= PLANOS (organizado) ======= */}
+      {/* ======= PLANOS ======= */}
       <Section
         id="plano"
         title="Entre para a mentoria"
         subtitle="Vagas limitadas para acompanhamento próximo"
       >
         <div className="space-y-8">
-          {/* Box de benefícios primeiro */}
           <CardFeature />
 
-          {/* Cards dos planos lado a lado */}
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             <PlanCard
               title="Plano Mentoria"
@@ -376,6 +407,13 @@ export default function MentoriaTraderLanding() {
               >
                 Falar no WhatsApp <MessageCircle className="w-4 h-4" />
               </a>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                className="inline-flex items-center gap-2 rounded-xl bg-slate-800 ring-1 ring-white/10 px-5 py-3 font-semibold hover:bg-slate-700"
+              >
+                <Instagram className="w-4 h-4" /> Instagram
+              </a>
             </div>
           </div>
         </div>
@@ -403,7 +441,7 @@ function Header() {
             className="h-8 w-8 rounded object-cover"
             priority
           />
-        <span className="font-bold tracking-tight">{MARCA}</span>
+          <span className="font-bold tracking-tight">{MARCA}</span>
         </Link>
 
         {/* MENU */}
@@ -416,13 +454,22 @@ function Header() {
         </nav>
 
         {/* CTA HEADER */}
-        <a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          className="hidden md:inline-flex items-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-4 py-2 font-semibold shadow hover:opacity-90"
-        >
-          Quero entrar
-        </a>
+        <div className="hidden md:flex items-center gap-2">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            className="inline-flex items-center gap-2 rounded-xl bg-slate-800 ring-1 ring-white/10 px-3 py-2 font-semibold hover:bg-slate-700"
+          >
+            <Instagram className="w-4 h-4" /> IG
+          </a>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-4 py-2 font-semibold shadow hover:opacity-90"
+          >
+            Quero entrar
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -576,7 +623,7 @@ function CardFeature() {
   );
 }
 
-/* ---- Card genérico de plano (usa flex para igualar alturas) ---- */
+/* ---- Card genérico de plano ---- */
 function PlanCard({
   title,
   price,
@@ -628,6 +675,119 @@ function PlanCard({
   );
 }
 
+/* ===== Popup de captação ===== */
+function LeadPopup({ onClose }: { onClose: () => void }) {
+  const [nome, setNome] = useState("");
+  const [whats, setWhats] = useState("");
+  const [email, setEmail] = useState("");
+
+  function sendToWhats(e: React.FormEvent) {
+    e.preventDefault();
+    const msg = [
+      "Olá! Quero fazer minha inscrição na mentoria.",
+      `• Nome: ${nome || "-"}`,
+      `• WhatsApp: ${whats || "-"}`,
+      email ? `• E-mail: ${email}` : null,
+      "",
+      "Vim pelo popup do site.",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+    onClose();
+  }
+
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+      {/* backdrop */}
+      <div
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      {/* modal */}
+      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-slate-900 ring-1 ring-white/10 shadow-2xl">
+        <div className="p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-9 w-9 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold">!</div>
+            <h3 className="text-xl font-semibold">Mentoria {MENTOR_NOME}</h3>
+          </div>
+          <p className="text-slate-300 text-sm">
+            Quer garantir sua vaga agora? Preencha rapidinho e vamos te chamar no WhatsApp.
+          </p>
+
+          <form onSubmit={sendToWhats} className="mt-4 space-y-3">
+            <div>
+              <label className="text-xs text-slate-400">Nome</label>
+              <input
+                required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-slate-950/60 ring-1 ring-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="Seu nome completo"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-slate-400">WhatsApp</label>
+              <input
+                required
+                value={whats}
+                onChange={(e) => setWhats(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-slate-950/60 ring-1 ring-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="(11) 90000-0000"
+              />
+            </div>
+            <div>
+              <label className="text-xs text-slate-400">E-mail (opcional)</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="mt-1 w-full rounded-xl bg-slate-950/60 ring-1 ring-white/10 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                placeholder="voce@email.com"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                type="submit"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 text-slate-950 px-4 py-2.5 font-semibold shadow-lg hover:opacity-90"
+              >
+                Fazer inscrição pelo WhatsApp <MessageCircle className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="inline-flex items-center justify-center rounded-xl bg-slate-800 ring-1 ring-white/10 px-4 py-2.5 font-semibold hover:bg-slate-700"
+              >
+                Agora não
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                className="inline-flex items-center gap-2 text-xs text-slate-300 hover:underline"
+              >
+                <Instagram className="w-4 h-4" /> Seguir no Instagram
+              </a>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                className="text-xs text-amber-400 hover:underline"
+              >
+                Falar direto no WhatsApp
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CtaSticky() {
   return (
     <div className="fixed bottom-4 left-0 right-0 z-40">
@@ -670,6 +830,11 @@ function Footer() {
             <li>
               <a href={WHATSAPP_LINK} target="_blank" className="hover:underline">
                 WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={INSTAGRAM_URL} target="_blank" className="inline-flex items-center gap-2 hover:underline">
+                <Instagram className="w-4 h-4" /> Instagram
               </a>
             </li>
             <li>
