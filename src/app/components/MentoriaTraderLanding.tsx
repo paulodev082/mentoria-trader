@@ -19,7 +19,10 @@ import {
 } from "lucide-react";
 
 /* ================== CONFIG ================== */
-// Número do WhatsApp no formato internacional sem + nem espaços
+/** Altere essa versão sempre que fizer um deploy/atualização do site
+ *  para o popup voltar a aparecer para todos. Ex.: "v2", "v3"… */
+const POPUP_VERSION = "v2";
+
 const WA_NUMBER = "5511988964565";
 const WHATSAPP_LINK =
   "https://wa.me/5511988964565?text=Ol%C3%A1!%20Quero%20entrar%20na%20mentoria%20de%20trader.";
@@ -41,9 +44,9 @@ type SectionProps = {
 export default function MentoriaTraderLanding() {
   const [showPopup, setShowPopup] = useState(false);
 
-  // Abre o popup 2s após carregar, se já não foi dispensado nas últimas 24h
+  // Abre o popup 2s após carregar, salvo se o usuário fechou NAS ÚLTIMAS 24h para ESTA VERSÃO
   useEffect(() => {
-    const key = "mt_popup_until";
+    const key = `mt_popup_until_${POPUP_VERSION}`;
     const until = localStorage.getItem(key);
     const now = Date.now();
     if (!until || now > Number(until)) {
@@ -144,10 +147,11 @@ export default function MentoriaTraderLanding() {
       {/* ====== POPUP ====== */}
       {showPopup && (
         <LeadPopup
+          version={POPUP_VERSION}
           onClose={() => {
-            // não mostrar novamente por 24h
+            // Não mostrar de novo por 24h (para esta versão)
             localStorage.setItem(
-              "mt_popup_until",
+              `mt_popup_until_${POPUP_VERSION}`,
               String(Date.now() + 24 * 60 * 60 * 1000)
             );
             setShowPopup(false);
@@ -232,7 +236,7 @@ export default function MentoriaTraderLanding() {
             ))}
           </div>
 
-          {/* Vídeo local: sem barra lateral, autoplay e loop */}
+          {/* Vídeo local 9:16 */}
           <div className="relative">
             <div className="mx-auto w-full max-w-[220px]">
               <div className="relative rounded-[22px] p-2 bg-gradient-to-b from-white/20 to-white/5 backdrop-blur-xl ring-1 ring-white/20 shadow-[0_20px_80px_-20px_rgba(245,158,11,.35)]">
@@ -364,7 +368,7 @@ export default function MentoriaTraderLanding() {
         subtitle={`${MENTOR_TITULO} | especialista em consistência e gestão`}
       >
         <div className="grid lg:grid-cols-[220px_1fr] gap-8 items-center">
-          {/* imagem 500x500 responsiva (preenche) */}
+          {/* LOGO 500x500 preenchendo */}
           <div className="w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden bg-slate-800 ring-1 ring-white/10 relative">
             <Image
               src="/logomago.jpeg"
@@ -623,7 +627,7 @@ function CardFeature() {
   );
 }
 
-/* ---- Card genérico de plano ---- */
+/* ---- PlanCard ---- */
 function PlanCard({
   title,
   price,
@@ -676,7 +680,7 @@ function PlanCard({
 }
 
 /* ===== Popup de captação ===== */
-function LeadPopup({ onClose }: { onClose: () => void }) {
+function LeadPopup({ onClose, version }: { onClose: () => void; version: string }) {
   const [nome, setNome] = useState("");
   const [whats, setWhats] = useState("");
   const [email, setEmail] = useState("");
@@ -684,7 +688,7 @@ function LeadPopup({ onClose }: { onClose: () => void }) {
   function sendToWhats(e: React.FormEvent) {
     e.preventDefault();
     const msg = [
-      "Olá! Quero fazer minha inscrição na mentoria.",
+      `Olá! Quero fazer minha inscrição na mentoria (${version}).`,
       `• Nome: ${nome || "-"}`,
       `• WhatsApp: ${whats || "-"}`,
       email ? `• E-mail: ${email}` : null,
@@ -707,12 +711,24 @@ function LeadPopup({ onClose }: { onClose: () => void }) {
         onClick={onClose}
       />
       {/* modal */}
-      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-slate-900 ring-1 ring-white/10 shadow-2xl">
-        <div className="p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-9 w-9 rounded-lg bg-amber-500 flex items-center justify-center text-slate-950 font-bold">!</div>
+      <div className="relative z-10 w-full max-w-lg rounded-2xl bg-slate-900 ring-1 ring-white/10 shadow-2xl overflow-hidden">
+        {/* Cabeçalho com LOGO */}
+        <div className="flex items-center gap-3 px-6 pt-6">
+          <Image
+            src="/logomago.jpeg"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="rounded object-cover"
+            priority
+          />
+          <div>
             <h3 className="text-xl font-semibold">Mentoria {MENTOR_NOME}</h3>
+            <p className="text-slate-400 text-xs">Versão {version}</p>
           </div>
+        </div>
+
+        <div className="p-6 pt-4">
           <p className="text-slate-300 text-sm">
             Quer garantir sua vaga agora? Preencha rapidinho e vamos te chamar no WhatsApp.
           </p>
@@ -839,7 +855,7 @@ function Footer() {
             </li>
             <li>
               <a href="mailto:contato@suaempresa.com" className="hover:underline">
-                contato@suaempresa.com
+                MAGOOTRADE@GMAIL.COM
               </a>
             </li>
           </ul>
